@@ -8,6 +8,7 @@ urls = (
     '/(\index)', 'index',
     '/(\d+)', 'iii',
     '/(\iii)', 'iii',
+    '/(\echart)', 'echart',
 )
 render = web.template.render("templates")
 
@@ -33,35 +34,35 @@ class index:
             return query
 
 
-class stock_page:
-    def GET(self, name):
-        print 'name: ', name
-        code = name
-        path = 'C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/'
-        try:
-            f = open(path + code, 'r')
-        except BaseException:
-            # print 'file not exist!!!'
-            return code + ' is not a stock code!!!'
-        else:
-            lines = f.readlines()
-            str = ''
-            for line in lines[:10000]:
-                str += line
-            res = str.split('☆公司概况☆')[1].split('☆财务分析☆')[0]
-
-            f.close()
-            # print res.decode('utf-8')
-            # return res.decode('utf-8')
-            return render.stock_page(name, res)
-
-    def POST(self):
-        # i = web.data()
-        # print i
-        i = web.input(id=[])
-        ids = i.get('id')
-        print ids
-        raise web.seeother('/bob')
+# class stock_page:
+#     def GET(self, name):
+#         print 'name: ', name
+#         code = name
+#         path = 'C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/'
+#         try:
+#             f = open(path + code, 'r')
+#         except BaseException:
+#             # print 'file not exist!!!'
+#             return code + ' is not a stock code!!!'
+#         else:
+#             lines = f.readlines()
+#             str = ''
+#             for line in lines[:10000]:
+#                 str += line
+#             res = str.split('☆公司概况☆')[1].split('☆财务分析☆')[0]
+#
+#             f.close()
+#             # print res.decode('utf-8')
+#             # return res.decode('utf-8')
+#             return render.stock_page(name, res)
+#
+#     def POST(self):
+#         # i = web.data()
+#         # print i
+#         i = web.input(id=[])
+#         ids = i.get('id')
+#         print ids
+#         raise web.seeother('/bob')
 
 
 class iii:
@@ -99,6 +100,20 @@ class iii:
             # print res.decode('utf-8')
             return render.fenlan(name, stock_name, name_list,res_list)
             # return render.fenlan(name)
+
+    def POST(self):
+        # i = web.data()
+        # print i
+        i = web.input(id=[])
+        ids = i.get('id')
+        print ids
+        raise web.seeother('/bob')
+
+class echart:
+    def GET(self, name):
+        print 'name: ', name
+        return render.echart(name)
+
 
     def POST(self):
         # i = web.data()
