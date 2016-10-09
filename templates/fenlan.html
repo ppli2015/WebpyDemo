@@ -1,0 +1,101 @@
+$def with (name,stock_name,name_list,res_list)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$stock_name</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./static/bootstrap.css">
+    <link rel="stylesheet" href="./static/test.css">
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="./static/jquery-3.0.0.min.js"></script>
+    <script src="./static/bootstrap.js"></script>
+    <script src="./static/test.js"></script>
+</head>
+<body class="font_1">
+<div class="site-wrapper">
+    <div class="">
+        <div class="cover-container">
+            <div class="masthead clearfix pos_stock">
+                <div class="inner">
+                    <h3 class="masthead-brand">AIDA</h3>
+                    <nav class="nav nav-masthead">
+                        <a class="nav-link active" href="#">Home</a>
+                        <a class="nav-link" href="#">About us</a>
+                        <a class="nav-link" href="#">Help</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="stock_content_div stock_content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2 class="mb80 bold text-center topic_20">Few things about $stock_name</h2>
+
+                        <!--<ul class="nav nav-tabs" role="tablist" id="myTab">-->
+                            <!--<li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab" onclick="myFunction()">Home</a>-->
+                            <!--</li>-->
+                            <!--<li role="presentation"><a href="#profile" role="tab" data-toggle="tab" onclick="myFunction()">Profile</a></li>-->
+                            <!--<li role="presentation"><a href="#messages" role="tab" data-toggle="tab" onclick="myFunction()">Messages</a></li>-->
+                            <!--<li role="presentation"><a href="#settings" role="tab" data-toggle="tab" onclick="myFunction()">Settings</a></li>-->
+                        <!--</ul>-->
+
+                        <!--<div class="tab-content">-->
+                            <!--<div role="tabpanel" class="tab-pane active" id="home">111111111</div>-->
+                            <!--<div role="tabpanel" class="tab-pane" id="profile">2222222222</div>-->
+                            <!--<div role="tabpanel" class="tab-pane" id="messages">3333333333333</div>-->
+                            <!--<div role="tabpanel" class="tab-pane" id="settings">444444444444</div>-->
+                        <!--</div>-->
+
+                        <div class="tabbed-content button-tabs vertical ">
+                            <ul class="tabs">
+                                <li class="active">
+                                    <div class="tab-title">
+                                        <span>$name_list[0]</span>
+                                    </div>
+                                </li>
+                                $for i in range(len(name_list)-1):
+                                <li>
+                                    <div class="tab-title">
+                                        <span>$name_list[i+1]</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="content">
+                                <li class="active">
+                                    <div class="tab-content">
+                                        <h5 class="bold">$name_list[0]</h5>
+                                        <hr>
+                                        $for line in res_list[0].split('\n'):
+                                            $line.strip()<br>
+                                    </div>
+                                </li>
+                                $for i in range(len(res_list)-1):
+                                <li>
+                                    <div class="tab-content">
+                                        <h5 class="bold">$name_list[i+1]</h5>
+                                        <hr>
+                                        $for line in res_list[i+1].split('\n'):
+                                            $line.strip()<br>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mastfoot pos_stock">
+                <div class="inner">
+                    <p>Organized by <a href="#">@AIDA</a>.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>
