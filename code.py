@@ -31,38 +31,7 @@ class index:
         if query.isdigit() and len(query) == 6:
             raise web.seeother('/' + query)
         else:
-            return query
-
-
-# class stock_page:
-#     def GET(self, name):
-#         print 'name: ', name
-#         code = name
-#         path = 'C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/'
-#         try:
-#             f = open(path + code, 'r')
-#         except BaseException:
-#             # print 'file not exist!!!'
-#             return code + ' is not a stock code!!!'
-#         else:
-#             lines = f.readlines()
-#             str = ''
-#             for line in lines[:10000]:
-#                 str += line
-#             res = str.split('☆公司概况☆')[1].split('☆财务分析☆')[0]
-#
-#             f.close()
-#             # print res.decode('utf-8')
-#             # return res.decode('utf-8')
-#             return render.stock_page(name, res)
-#
-#     def POST(self):
-#         # i = web.data()
-#         # print i
-#         i = web.input(id=[])
-#         ids = i.get('id')
-#         print ids
-#         raise web.seeother('/bob')
+            return 'query is : ' + query
 
 
 class iii:
@@ -94,11 +63,10 @@ class iii:
                 if res_list[n].find('【'):
                     res_list[n] = res_list[n].split('【')[0]
 
-
             # print name_list
             # print len(res_list)
             # print res.decode('utf-8')
-            return render.fenlan(name, stock_name, name_list,res_list)
+            return render.fenlan(name, stock_name, name_list, res_list)
             # return render.fenlan(name)
 
     def POST(self):
@@ -109,19 +77,39 @@ class iii:
         print ids
         raise web.seeother('/bob')
 
+
 class echart:
     def GET(self, name):
         print 'name: ', name
-        return render.echart(name)
+        f = open('C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/000001', 'r')
+        lines = f.readlines()
+        str = ''
+        for line in lines[:10000]:
+            str += line
+        res = str.split('☆公司概况☆')[1].split('☆财务分析☆')[0]
+
+        f.close()
+
+        stock_name = res.split('◇')[1].split()[1]
+        name_list = res.split('\n')[1].split('】')[:-1]
+        for n in range(len(name_list)):
+            name_list[n] = name_list[n].split('.')[1]
+        res = '\n'.join(res.split('\n')[2:]).strip()
+        res_list = res.split('】')[1:]
+        for n in range(len(res_list)):
+            if res_list[n].find('【'):
+                res_list[n] = res_list[n].split('【')[0]
+
+        return render.echart(name, stock_name, name_list, res_list)
 
 
-    def POST(self):
-        # i = web.data()
-        # print i
-        i = web.input(id=[])
-        ids = i.get('id')
-        print ids
-        raise web.seeother('/bob')
+def POST(self):
+    # i = web.data()
+    # print i
+    i = web.input(id=[])
+    ids = i.get('id')
+    print ids
+    raise web.seeother('/bob')
 
 
 if __name__ == "__main__":
