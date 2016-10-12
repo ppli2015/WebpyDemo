@@ -81,7 +81,7 @@ class iii:
 class echart:
     def GET(self, name):
         print 'name: ', name
-        f = open('C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/000001', 'r')
+        f = open('C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/000015', 'r')
         lines = f.readlines()
         str = ''
         for line in lines[:10000]:
@@ -102,14 +102,15 @@ class echart:
 
         return render.echart(name, stock_name, name_list, res_list)
 
+    def POST(self,name):
 
-def POST(self):
-    # i = web.data()
-    # print i
-    i = web.input(id=[])
-    ids = i.get('id')
-    print ids
-    raise web.seeother('/bob')
+        i = web.data()
+        year = i.split('=')[1].split('&')[0]
+        keyword = i.split('=')[2]
+        print name,year,keyword
+        # raise web.seeother('/bob')
+        ### get data
+        return '123'
 
 
 if __name__ == "__main__":
