@@ -1,24 +1,35 @@
 $(document).ready(function () {
     // Tabbed Content
 
-
     $('.tabs li').click(function () {
+        // alert("li");
         $(this).closest('.tabs').find('li').removeClass('active');
         $(this).addClass('active');
         var liIndex = $(this).index() + 1;
-        $(this).closest('.tabbed-content').find('.content>li').removeClass('active');
-        $(this).closest('.tabbed-content').find('.content>li:nth-of-type(' + liIndex + ')').addClass('active');
+        $(this).closest('.tabbed-content').find('.father>li').removeClass('active');
+        $(this).closest('.tabbed-content').find('.father>li:nth-of-type(' + liIndex + ')').addClass('active');
+    });
+
+    $('.nav a').click(function () {
+        // alert("nav");
+        $(this).closest('.nav').find('a').removeClass('active');
+        $(this).addClass('active');
+        var liIndex = $(this).index() + 1;
+        $(this).closest('.tab-content').find('.child>li').removeClass('active');
+        $(this).closest('.tab-content').find('.child>li:nth-of-type(' + liIndex + ')').addClass('active');
     });
 
 
-    $("#search").click(function () {
-        var myChart = echarts.init(document.getElementById('main1'),'infographic');
-        // if(myChart.getOption()==null) {
+    var myChart = echarts.init(document.getElementById('main1'),'infographic');
+    testAjax();
+
+    function testAjax(){
         var aj = $.ajax({
             url: 'echart',// 跳转到 action
             data: {
-                year: $("#search_year").val(),
-                keyword: $("#search_keyword").val()
+                //year: $("#search_year").val(),
+                //keyword: $("#search_keyword").val()
+                type: "1"
             },
             type: 'post',
             cache: false,
@@ -36,25 +47,52 @@ $(document).ready(function () {
                 alert("error!!!");
             }
         });
+    }
 
+
+
+    $("#topic").click(function () {
+        if(myChart.getOption()==null){
+            testAjax();
+        }
     });
+
+    function getDateFormat(date){
+        var month;
+        var day;
+        if(date.getMonth().toString().length<2)
+            month='0'+date.getMonth().toString();
+        else
+            month=date.getMonth().toString();
+        if(date.getDate().toString().length<2)
+            day='0'+date.getDate().toString();
+        else
+            day=date.getDate().toString();
+        return date.getFullYear().toString()+'-'+month+'-'+day
+
+    }
 
     function getOption(data1) {
 
         // 指定图表的配置项和数据
-        var base = +new Date(1968, 9, 3);
+        var base = +new Date(1990, 0, 0);
         var oneDay = 24 * 3600 * 1000;
         var date = [];
 
-        var data = [Math.random() * 300];
-
-        for (var i = 1; i < 20000; i++) {
+        var json = data1;
+        var data = [];
+        for (var i = 1; i<10000; i++) {
             var now = new Date(base += oneDay);
             date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
-            data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
+            var key = getDateFormat(now);
+            if(json[key]!=null) {
+                data.push(json[key]);
+            }
+            else
+                data.push(0);
         }
 
-        var new_option = {
+        var option1 = {
             tooltip: {
                 trigger: 'axis',
                 position: function (pt) {
@@ -63,7 +101,8 @@ $(document).ready(function () {
             },
             title: {
                 left: 'center',
-                text: '大数据量面积图'
+                //textColor: 'rgb(255, 70, 131)',
+                text: '上市时间'
             },
             legend: {
                 top: 'bottom',
@@ -131,7 +170,7 @@ $(document).ready(function () {
                 }
             ]
         };
-        return new_option;
+        return option1;
     }
 
 });

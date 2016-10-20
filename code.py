@@ -2,6 +2,7 @@
 __author__ = 'lpp'
 
 import web
+import json
 
 ##urls (argument) - class - page
 urls = (
@@ -66,17 +67,21 @@ class iii:
             # print name_list
             # print len(res_list)
             # print res.decode('utf-8')
-            return render.fenlan(name, stock_name, name_list, res_list)
+            return render.fenlan2(name, stock_name, name_list, res_list)
             # return render.fenlan(name)
 
-    def POST(self):
-        # i = web.data()
-        # print i
-        i = web.input(id=[])
-        ids = i.get('id')
-        print ids
-        raise web.seeother('/bob')
+    def POST(self,name):
+        i = web.data()
+        query = i.split('=')[1]
+        print name
+        # i = web.input(id=[])
+        # ids = i.get('id')
+        # print ids
 
+        if query.isdigit() and len(query) == 6:
+            raise web.seeother('/' + query)
+        else:
+            return 'query is : ' + query
 
 class echart:
     def GET(self, name):
@@ -103,14 +108,28 @@ class echart:
         return render.echart(name, stock_name, name_list, res_list)
 
     def POST(self,name):
+        #
+        # i = web.data()
+        # year = i.split('=')[1].split('&')[0]
+        # keyword = i.split('=')[2]
+        # print name,year,keyword
+        # # raise web.seeother('/bob')
+        # ### get data
+        # return '123'
 
         i = web.data()
-        year = i.split('=')[1].split('&')[0]
-        keyword = i.split('=')[2]
-        print name,year,keyword
-        # raise web.seeother('/bob')
-        ### get data
-        return '123'
+        print 'name:',name
+        print 'web.data: ',i
+        file_object = open("1.json")
+        strdata1 = eval(file_object.read())
+        try:
+            data1 = json.dumps(strdata1)
+        finally:
+            file_object.close()
+        # 获取数据
+
+        return data1
+
 
 
 if __name__ == "__main__":
