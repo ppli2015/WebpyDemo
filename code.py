@@ -3,6 +3,7 @@ __author__ = 'lpp'
 
 import web
 import json
+import urllib
 
 ##urls (argument) - class - page
 urls = (
@@ -24,7 +25,7 @@ class index:
 
     def POST(self, name):
         i = web.data()
-        query = i.split('=')[1]
+        query = urllib.unquote(i.split('=')[1])
         print 'index.POST:', name, '=' * 10
         # i = web.input(id=[])
         # ids = i.get('id')

@@ -20,10 +20,10 @@ $(document).ready(function () {
     });
 
 
-    var myChart = echarts.init(document.getElementById('main1'),'infographic');
+    var myChart = echarts.init(document.getElementById('main1'), 'infographic');
     testAjax();
 
-    function testAjax(){
+    function testAjax() {
         var aj = $.ajax({
             url: 'echart',// 跳转到 action
             data: {
@@ -50,9 +50,8 @@ $(document).ready(function () {
     }
 
 
-
     $("#topic").click(function () {
-        if(myChart.getOption()==null){
+        if (myChart.getOption() == null) {
             testAjax();
         }
     });
@@ -72,23 +71,32 @@ $(document).ready(function () {
     }
 
     function getOption(data1) {
-
+        var base = +new Date(1990, 1, 1);
         var oneDay = 24 * 3600 * 1000;
         var date = [];
         var today = +new Date();
-        var json = data1;
-        var data = [];
-        var base = +new Date(today - 9999 * oneDay);
-        for (var i = 1; i < 10000; i++) {
+        var jsonData = data1;
+        var compData = [];
+        var dayCount = Math.ceil((today - base) / oneDay);
+        for (var i = 1; i <= dayCount; i++) {
             var now = new Date(base += oneDay);
             date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
             var key = getDateFormat(now);
-            if (json[key] != null) {
-                data.push(json[key]);
+            if (jsonData[key] != null) {
+                compData.push(jsonData[key]);
             }
             else
-                data.push(0);
+                compData.push(0);
         }
+        //console.log('today:' + today);
+        //console.log('base:' + base);
+        //console.log('dayCount:' + dayCount);
+        //console.log('jsonData.length:' + Object.keys(jsonData).length);
+        //console.log(jsonData);
+        //console.log('date.length:' + date.length);
+        //console.log(date);
+        //console.log('compData.length:' + compData.length);
+        //console.log(compData);
 
         // 指定图表的配置项和数据
         var option1 = {
@@ -100,7 +108,6 @@ $(document).ready(function () {
             },
             title: {
                 left: 'center',
-//                                                    textColor: 'rgb(255, 70, 131)',
                 text: '公司上市数量变化图'
             },
             legend: {
@@ -121,14 +128,12 @@ $(document).ready(function () {
                 data: date
             },
             yAxis: {
-                type: 'value',
-                boundaryGap: [0, '100%']
+                type: 'value'
             },
             dataZoom: [{
                 type: 'inside',
                 start: 85,
-                end: 100,
-                realtime: true
+                end: 100
             }, {
                 start: 85,
                 end: 100,
@@ -149,7 +154,7 @@ $(document).ready(function () {
                     type: 'line',
                     smooth: true,
                     symbol: 'none',
-                    sampling: 'average',
+                    //sampling: 'average',
                     itemStyle: {
                         normal: {
                             color: 'rgb(255, 70, 131)'
@@ -166,7 +171,7 @@ $(document).ready(function () {
                             }])
                         }
                     },
-                    data: data
+                    data: compData
                 }
             ]
         };
