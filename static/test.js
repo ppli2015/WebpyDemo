@@ -57,41 +57,40 @@ $(document).ready(function () {
         }
     });
 
-    function getDateFormat(date){
+    function getDateFormat(date) {
         var month;
         var day;
-        if(date.getMonth().toString().length<2)
-            month='0'+date.getMonth().toString();
+        month = (date.getMonth() + 1).toString();
+        if (month.length < 2)
+            month = '0' + month;
+        if (date.getDate().toString().length < 2)
+            day = '0' + date.getDate().toString();
         else
-            month=date.getMonth().toString();
-        if(date.getDate().toString().length<2)
-            day='0'+date.getDate().toString();
-        else
-            day=date.getDate().toString();
-        return date.getFullYear().toString()+'-'+month+'-'+day
+            day = date.getDate().toString();
+        return date.getFullYear().toString() + '-' + month + '-' + day
 
     }
 
     function getOption(data1) {
 
-        // 指定图表的配置项和数据
-        var base = +new Date(1990, 0, 0);
         var oneDay = 24 * 3600 * 1000;
         var date = [];
-
+        var today = +new Date();
         var json = data1;
         var data = [];
-        for (var i = 1; i<10000; i++) {
+        var base = +new Date(today - 9999 * oneDay);
+        for (var i = 1; i < 10000; i++) {
             var now = new Date(base += oneDay);
             date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
             var key = getDateFormat(now);
-            if(json[key]!=null) {
+            if (json[key] != null) {
                 data.push(json[key]);
             }
             else
                 data.push(0);
         }
 
+        // 指定图表的配置项和数据
         var option1 = {
             tooltip: {
                 trigger: 'axis',
@@ -101,12 +100,11 @@ $(document).ready(function () {
             },
             title: {
                 left: 'center',
-                //textColor: 'rgb(255, 70, 131)',
-                text: '上市时间'
+//                                                    textColor: 'rgb(255, 70, 131)',
+                text: '公司上市数量变化图'
             },
             legend: {
-                top: 'bottom',
-                data: ['意向']
+                top: 'bottom'
             },
             toolbox: {
                 feature: {
@@ -129,10 +127,11 @@ $(document).ready(function () {
             dataZoom: [{
                 type: 'inside',
                 start: 85,
-                end: 100
+                end: 100,
+                realtime: true
             }, {
-                start: 0,
-                end: 10,
+                start: 85,
+                end: 100,
                 handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
                 handleSize: '80%',
                 handleStyle: {
@@ -142,10 +141,11 @@ $(document).ready(function () {
                     shadowOffsetX: 2,
                     shadowOffsetY: 2
                 }
-            }],
+            }
+            ],
             series: [
                 {
-                    name: '模拟数据',
+                    name: '上市数量',
                     type: 'line',
                     smooth: true,
                     symbol: 'none',

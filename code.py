@@ -16,6 +16,7 @@ render = web.template.render("templates")
 
 class index:
     def GET(self, name):
+        print 'index.GET:', name, '=' * 10
         # argu = [name, 'help']
         # argus = {'a1': '111', 'a2': '222'}
         # return render.test('hh', *argu, **argus)
@@ -24,7 +25,7 @@ class index:
     def POST(self, name):
         i = web.data()
         query = i.split('=')[1]
-        print name
+        print 'index.POST:', name, '=' * 10
         # i = web.input(id=[])
         # ids = i.get('id')
         # print ids
@@ -37,7 +38,7 @@ class index:
 
 class iii:
     def GET(self, name):
-        print 'name: ', name
+        print 'iii.GET:', name, '=' * 10
         code = name
         path = 'C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/'
         try:
@@ -70,10 +71,10 @@ class iii:
             return render.fenlan2(name, stock_name, name_list, res_list)
             # return render.fenlan(name)
 
-    def POST(self,name):
+    def POST(self, name):
         i = web.data()
         query = i.split('=')[1]
-        print name
+        print 'iii.POST:', name, '=' * 10
         # i = web.input(id=[])
         # ids = i.get('id')
         # print ids
@@ -83,9 +84,10 @@ class iii:
         else:
             return 'query is : ' + query
 
+
 class echart:
     def GET(self, name):
-        print 'name: ', name
+        print 'echart.GET:', name, '=' * 10
         f = open('C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/000015', 'r')
         lines = f.readlines()
         str = ''
@@ -107,7 +109,7 @@ class echart:
 
         return render.echart(name, stock_name, name_list, res_list)
 
-    def POST(self,name):
+    def POST(self, name):
         #
         # i = web.data()
         # year = i.split('=')[1].split('&')[0]
@@ -118,18 +120,15 @@ class echart:
         # return '123'
 
         i = web.data()
-        print 'name:',name
-        print 'web.data: ',i
-        file_object = open("1.json")
-        strdata1 = eval(file_object.read())
-        try:
-            data1 = json.dumps(strdata1)
-        finally:
-            file_object.close()
+        print 'echart.POST:', name, '=' * 10
+        print 'web.data: ', i
+        file_object = open("1.json","r")
+        lines = file_object.readlines()
+        data1 = json.dumps(json.loads(lines[0]))
+        file_object.close()
         # 获取数据
 
         return data1
-
 
 
 if __name__ == "__main__":
