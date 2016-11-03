@@ -1,330 +1,222 @@
-<!--$def with (name,stock_name,name_list,res_list)-->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>$name</title>-->
-    <!--&lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
-    <!--<link rel="stylesheet" href="./static/bootstrap.css">-->
-    <!--<link rel="stylesheet" href="./static/test.css">-->
-    <!--&lt;!&ndash; jQuery first, then Bootstrap JS. &ndash;&gt;-->
-    <!--<script src="./static/jquery-3.0.0.min.js"></script>-->
-    <!--<script src="./static/bootstrap.js"></script>-->
-    <!--<script src="./static/test.js"></script>-->
-    <!--<script src="./static/echarts.js"></script>-->
-    <!--&lt;!&ndash; themes.js &ndash;&gt;-->
-    <!--<script src="./static/dark.js"></script>-->
-    <!--<script src="./static/macarons.js"></script>-->
-    <!--<script src="./static/vintage.js"></script>-->
-    <!--<script src="./static/roma.js"></script>-->
-    <!--<script src="./static/infographic.js"></script>-->
-    <!--<script src="./static/shine.js"></script>-->
-    <!--&lt;!&ndash; maps.js &ndash;&gt;-->
-    <!--<script src="./static/china.js"></script>-->
+$def with (name,stock_name,name_list,res_list)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$name</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./static/bootstrap.css">
+    <link rel="stylesheet" href="./static/test.css">
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="./static/jquery-3.0.0.min.js"></script>
+    <script src="./static/bootstrap.js"></script>
+    <script src="./static/test.js"></script>
+    <script src="./static/echarts.js"></script>
+    <!-- themes.js -->
+    <script src="./static/dark.js"></script>
+    <script src="./static/macarons.js"></script>
+    <script src="./static/vintage.js"></script>
+    <script src="./static/roma.js"></script>
+    <script src="./static/infographic.js"></script>
+    <script src="./static/shine.js"></script>
+    <!-- maps.js -->
+    <script src="./static/china.js"></script>
 
 
-<!--</head>-->
-<!--<body class="font_1">-->
-<!--<div class="cover-container">-->
-    <!--<div class="masthead clearfix pos_stock">-->
-        <!--<div class="inner">-->
-            <!--<h3 class="masthead-brand">AIDA</h3>-->
-            <!--<nav class="nav nav-masthead">-->
-                <!--<a class="nav-link active" href="#">Home</a>-->
-                <!--<a class="nav-link" href="#">About us</a>-->
-                <!--<a class="nav-link" href="#">Help</a>-->
-            <!--</nav>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<!--<div class="main-container stock_content_div">-->
-    <!--<div class="container">-->
-        <!--<div class="row">-->
-            <!--<div class="stock_content">-->
-                <!--<div class="col-sm-12">-->
-                    <!--<h2 class="mb80 bold text-center topic_20">Few things about $name</h2>-->
-                    <!--<div class="tabbed-content button-tabs vertical ">-->
-                        <!--<ul class="tabs">-->
-                            <!--<li class="active">-->
-                                <!--<div class="tab-title">-->
-                                    <!--<span>$name_list[0]</span>-->
-                                <!--</div>-->
-                            <!--</li>-->
-                            <!--$for i in range(len(name_list)-1):-->
-                                <!--<li>-->
-                                    <!--<div class="tab-title">-->
-                                        <!--<span>$name_list[i+1]</span>-->
-                                    <!--</div>-->
-                                <!--</li>-->
-                            <!--<li>-->
-                                <!--<div class="tab-title">-->
-                                    <!--<span>echart1</span>-->
-                                <!--</div>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                                <!--<div class="tab-title">-->
-                                    <!--<span>echart2</span>-->
-                                <!--</div>-->
-                            <!--</li>-->
+</head>
+<body class="font_1">
+<div class="cover-container">
+    <div class="masthead clearfix pos_stock">
+        <div class="inner">
+            <h3 class="masthead-brand">AIDA</h3>
+            <nav class="nav nav-masthead">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#">About us</a>
+                <a class="nav-link" href="#">Help</a>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="main-container stock_content_div">
+    <div class="container">
+        <div class="row">
+            <div class="stock_content">
+                <div class="col-sm-12">
+                    <h2 class="mb80 bold text-center topic_20">Few things about $name</h2>
+                    <div id="echart1" class="center-block" style="width: 900px;height: 520px;"></div>
+                    <script type="text/javascript">
+                        // 基于准备好的dom，初始化echarts实例
+                        // 第二个参数可以指定前面引入的主题
+                        var myChart = echarts.init(document.getElementById('echart1'), 'infographic');
 
-                        <!--</ul>-->
-                        <!--<ul class="content">-->
-                            <!--<li class="active">-->
-                                <!--<div class="tab-content">-->
-                                    <!--<h5 class="bold">$name_list[0]</h5>-->
-                                    <!--<hr>-->
-                                    <!--$for line in res_list[0].split('\n'):-->
-                                    <!--$line.strip()<br>-->
-                                <!--</div>-->
-                            <!--</li>-->
-                            <!--$for i in range(len(res_list)-1):-->
-                                <!--<li>-->
-                                    <!--<div class="tab-content">-->
-                                        <!--<h5 class="bold">$name_list[i+1]</h5>-->
-                                        <!--<hr>-->
-                                        <!--$for line in res_list[i+1].split('\n'):-->
-                                        <!--$line.strip()<br>-->
-                                    <!--</div>-->
-                                <!--</li>-->
-                            <!--<li>-->
-                                <!--<div class="tab-content">-->
-                                    <!--&lt;!&ndash;<h5 class="bold">echart</h5>&ndash;&gt;-->
-                                    <!--<form class="form-inline">-->
-                                        <!--<div class="form-group">-->
-                                            <!--<input type="text" class="form-control" id="search_year"-->
-                                                   <!--placeholder="Year">-->
-                                        <!--</div>-->
-                                        <!--<div class="form-group">-->
-                                            <!--<input type="text" class="form-control" id="search_keyword"-->
-                                                   <!--placeholder="Keyword">-->
-                                        <!--</div>-->
-                                        <!--<button type="button" class="btn btn-secondary-outline" id="search" autocomplete="on">Search</button>-->
-                                    <!--</form>-->
-                                    <!--<hr>-->
-                                    <!--&lt;!&ndash; 为 ECharts 准备一个具备大小（宽高）的 DOM &ndash;&gt;-->
-                                    <!--<div id="main1" class="center-block" style="width: 600px;height: 320px;"></div>-->
-                                    <!--<script type="text/javascript">-->
-                                        <!--// 基于准备好的dom，初始化echarts实例-->
-                                        <!--// 第二个参数可以指定前面引入的主题-->
-                                        <!--var myChart = echarts.init(document.getElementById('main1'),'infographic');-->
+                        // 指定图表的配置项和数据
+                        function randomData() {
+                            return Math.round(Math.random() * 1000);
+                        }
 
-                                        <!--// 指定图表的配置项和数据-->
-                                        <!--var base = +new Date(1968, 9, 3);-->
-                                        <!--var oneDay = 24 * 3600 * 1000;-->
-                                        <!--var date = [];-->
+                        var option = {
+                            title: {
+                                text: '上市公司与金融中介分布图',
+                                subtext: '纯属虚构',
+                                left: 'center'
+                            },
+                            tooltip: {
+                                trigger: 'item'
+                            },
+                            legend: {
+                                orient: 'vertical',
+                                left: 'left',
+                                data: [
+                                    {
+                                        name: '上市公司',
+                                        // 强制设置图形为圆。
+                                        icon: 'circle'
+                                    }, {
+                                        name: '金融中介',
+                                        // 强制设置图形为圆。
+                                        icon: 'circle'
+                                    }]
+                            },
+                            color: ['#91c7ae', '#6e7074', '#546570', '#c4ccd3'],
+                            visualMap: {
+                                min: 0,
+                                max: 2500,
+                                left: 'left',
+                                top: 'bottom',
+                                text: ['高', '低'],           // 文本，默认为数值文本
+                                calculable: true,
+                                color: ['orange', 'white']
+                            },
+                            toolbox: {
+                                show: true,
+                                orient: 'vertical',
+                                left: 'right',
+                                top: 'center',
+                                feature: {
+                                    dataView: {readOnly: false},
+                                    restore: {},
+                                    saveAsImage: {}
+                                }
+                            },
+                            series: [
+                                {
+                                    name: '上市公司',
+                                    type: 'map',
+                                    mapType: 'china',
+                                    roam: true,
+                                    label: {
+                                        normal: {
+                                            show: true
+                                        },
+                                        emphasis: {
+                                            show: true
+                                        }
+                                    },
+                                    data: [
+                                        {name: '北京', value: randomData()},
+                                        {name: '天津', value: randomData()},
+                                        {name: '上海', value: randomData()},
+                                        {name: '重庆', value: randomData()},
+                                        {name: '河北', value: randomData()},
+                                        {name: '河南', value: randomData()},
+                                        {name: '云南', value: randomData()},
+                                        {name: '辽宁', value: randomData()},
+                                        {name: '黑龙江', value: randomData()},
+                                        {name: '湖南', value: randomData()},
+                                        {name: '安徽', value: randomData()},
+                                        {name: '山东', value: randomData()},
+                                        {name: '新疆', value: randomData()},
+                                        {name: '江苏', value: randomData()},
+                                        {name: '浙江', value: randomData()},
+                                        {name: '江西', value: randomData()},
+                                        {name: '湖北', value: randomData()},
+                                        {name: '广西', value: randomData()},
+                                        {name: '甘肃', value: randomData()},
+                                        {name: '山西', value: randomData()},
+                                        {name: '内蒙古', value: randomData()},
+                                        {name: '陕西', value: randomData()},
+                                        {name: '吉林', value: randomData()},
+                                        {name: '福建', value: randomData()},
+                                        {name: '贵州', value: randomData()},
+                                        {name: '广东', value: randomData()},
+                                        {name: '青海', value: randomData()},
+                                        {name: '西藏', value: randomData()},
+                                        {name: '四川', value: randomData()},
+                                        {name: '宁夏', value: randomData()},
+                                        {name: '海南', value: randomData()},
+                                        {name: '台湾', value: randomData()},
+                                        {name: '香港', value: randomData()},
+                                        {name: '澳门', value: randomData()}
+                                    ]
+                                },
+                                {
+                                    name: '金融中介',
+                                    type: 'map',
+                                    mapType: 'china',
+                                    roam: true,
+                                    label: {
+                                        normal: {
+                                            show: true
+                                        },
+                                        emphasis: {
+                                            show: true
+                                        }
+                                    },
+                                    data: [
+                                        {name: '北京', value: randomData()},
+                                        {name: '天津', value: randomData()},
+                                        {name: '上海', value: randomData()},
+                                        {name: '重庆', value: randomData()},
+                                        {name: '河北', value: randomData()},
+                                        {name: '河南', value: randomData()},
+                                        {name: '云南', value: randomData()},
+                                        {name: '辽宁', value: randomData()},
+                                        {name: '黑龙江', value: randomData()},
+                                        {name: '湖南', value: randomData()},
+                                        {name: '安徽', value: randomData()},
+                                        {name: '山东', value: randomData()},
+                                        {name: '新疆', value: randomData()},
+                                        {name: '江苏', value: randomData()},
+                                        {name: '浙江', value: randomData()},
+                                        {name: '江西', value: randomData()},
+                                        {name: '湖北', value: randomData()},
+                                        {name: '广西', value: randomData()},
+                                        {name: '甘肃', value: randomData()},
+                                        {name: '山西', value: randomData()},
+                                        {name: '内蒙古', value: randomData()},
+                                        {name: '陕西', value: randomData()},
+                                        {name: '吉林', value: randomData()},
+                                        {name: '福建', value: randomData()},
+                                        {name: '贵州', value: randomData()},
+                                        {name: '广东', value: randomData()},
+                                        {name: '青海', value: randomData()},
+                                        {name: '西藏', value: randomData()},
+                                        {name: '四川', value: randomData()},
+                                        {name: '宁夏', value: randomData()},
+                                        {name: '海南', value: randomData()},
+                                        {name: '台湾', value: randomData()},
+                                        {name: '香港', value: randomData()},
+                                        {name: '澳门', value: randomData()}
+                                    ]
+                                }
+                            ]
+                        };
 
-                                        <!--var data = [Math.random() * 300];-->
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart.setOption(option);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cover-container">
+    <div class="mastfoot pos_stock">
+        <div class="inner">
+            <p>Organized by <a href="#">@AIDA</a>.</p>
+        </div>
+    </div>
+</div>
 
-                                        <!--for (var i = 1; i < 20000; i++) {-->
-                                            <!--var now = new Date(base += oneDay);-->
-                                            <!--date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));-->
-                                            <!--data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));-->
-                                        <!--}-->
-
-                                        <!--var option = {-->
-                                            <!--tooltip: {-->
-                                                <!--trigger: 'axis',-->
-                                                <!--position: function (pt) {-->
-                                                    <!--return [pt[0], '10%'];-->
-                                                <!--}-->
-                                            <!--},-->
-                                            <!--title: {-->
-                                                <!--left: 'center',-->
-                                                <!--text: '大数据量面积图',-->
-                                            <!--},-->
-                                            <!--legend: {-->
-                                                <!--top: 'bottom',-->
-                                                <!--data: ['意向']-->
-                                            <!--},-->
-                                            <!--toolbox: {-->
-                                                <!--feature: {-->
-                                                    <!--dataZoom: {-->
-                                                        <!--yAxisIndex: 'none'-->
-                                                    <!--},-->
-                                                    <!--restore: {},-->
-                                                    <!--saveAsImage: {}-->
-                                                <!--}-->
-                                            <!--},-->
-                                            <!--xAxis: {-->
-                                                <!--type: 'category',-->
-                                                <!--boundaryGap: false,-->
-                                                <!--data: date-->
-                                            <!--},-->
-                                            <!--yAxis: {-->
-                                                <!--type: 'value',-->
-                                                <!--boundaryGap: [0, '100%']-->
-                                            <!--},-->
-                                            <!--dataZoom: [{-->
-                                                <!--type: 'inside',-->
-                                                <!--start: 85,-->
-                                                <!--end: 100-->
-                                            <!--}, {-->
-                                                <!--start: 0,-->
-                                                <!--end: 10,-->
-                                                <!--handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',-->
-                                                <!--handleSize: '80%',-->
-                                                <!--handleStyle: {-->
-                                                    <!--color: '#fff',-->
-                                                    <!--shadowBlur: 3,-->
-                                                    <!--shadowColor: 'rgba(0, 0, 0, 0.6)',-->
-                                                    <!--shadowOffsetX: 2,-->
-                                                    <!--shadowOffsetY: 2-->
-                                                <!--}-->
-                                            <!--}],-->
-                                            <!--series: [-->
-                                                <!--{-->
-                                                    <!--name: '模拟数据',-->
-                                                    <!--type: 'line',-->
-                                                    <!--smooth: true,-->
-                                                    <!--symbol: 'none',-->
-                                                    <!--sampling: 'average',-->
-                                                    <!--itemStyle: {-->
-                                                        <!--normal: {-->
-                                                            <!--color: 'rgb(255, 70, 131)'-->
-                                                        <!--}-->
-                                                    <!--},-->
-                                                    <!--areaStyle: {-->
-                                                        <!--normal: {-->
-                                                            <!--color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{-->
-                                                                <!--offset: 0,-->
-                                                                <!--color: 'rgb(255, 158, 68)'-->
-                                                            <!--}, {-->
-                                                                <!--offset: 1,-->
-                                                                <!--color: 'rgb(255, 70, 131)'-->
-                                                            <!--}])-->
-                                                        <!--}-->
-                                                    <!--},-->
-                                                    <!--data: data-->
-                                                <!--}-->
-                                            <!--]-->
-                                        <!--};-->
-
-                                        <!--// 使用刚指定的配置项和数据显示图表。-->
-                                        <!--myChart.setOption(option);-->
-                                    <!--</script>-->
-                                <!--</div>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                                <!--<div class="tab-content">-->
-                                    <!--<h5 class="bold">echart</h5>-->
-                                    <!--<hr>-->
-                                    <!--&lt;!&ndash; 为 ECharts 准备一个具备大小（宽高）的 DOM &ndash;&gt;-->
-                                    <!--<div id="main2" class="center-block" style="width: 600px;height: 320px;"></div>-->
-                                    <!--<script type="text/javascript">-->
-                                        <!--// 基于准备好的dom，初始化echarts实例-->
-                                        <!--// 第二个参数可以指定前面引入的主题-->
-                                        <!--var myChart = echarts.init(document.getElementById('main2'),'infographic');-->
-
-                                        <!--// 指定图表的配置项和数据-->
-                                        <!--var base = +new Date(1968, 9, 3);-->
-                                        <!--var oneDay = 24 * 3600 * 1000;-->
-                                        <!--var date = [];-->
-
-                                        <!--var data = [Math.random() * 300];-->
-
-                                        <!--for (var i = 1; i < 20000; i++) {-->
-                                            <!--var now = new Date(base += oneDay);-->
-                                            <!--date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));-->
-                                            <!--data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));-->
-                                        <!--}-->
-
-                                        <!--var option = {-->
-                                            <!--tooltip: {-->
-                                                <!--trigger: 'axis',-->
-                                                <!--position: function (pt) {-->
-                                                    <!--return [pt[0], '10%'];-->
-                                                <!--}-->
-                                            <!--},-->
-                                            <!--title: {-->
-                                                <!--left: 'center',-->
-                                                <!--text: '大数据量面积图',-->
-                                            <!--},-->
-                                            <!--legend: {-->
-                                                <!--top: 'bottom',-->
-                                                <!--data: ['意向']-->
-                                            <!--},-->
-                                            <!--toolbox: {-->
-                                                <!--feature: {-->
-                                                    <!--dataZoom: {-->
-                                                        <!--yAxisIndex: 'none'-->
-                                                    <!--},-->
-                                                    <!--restore: {},-->
-                                                    <!--saveAsImage: {}-->
-                                                <!--}-->
-                                            <!--},-->
-                                            <!--xAxis: {-->
-                                                <!--type: 'category',-->
-                                                <!--boundaryGap: false,-->
-                                                <!--data: date-->
-                                            <!--},-->
-                                            <!--yAxis: {-->
-                                                <!--type: 'value',-->
-                                                <!--boundaryGap: [0, '100%']-->
-                                            <!--},-->
-                                            <!--dataZoom: [{-->
-                                                <!--type: 'inside',-->
-                                                <!--start: 85,-->
-                                                <!--end: 100-->
-                                            <!--}, {-->
-                                                <!--start: 0,-->
-                                                <!--end: 10,-->
-                                                <!--handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',-->
-                                                <!--handleSize: '80%',-->
-                                                <!--handleStyle: {-->
-                                                    <!--color: '#fff',-->
-                                                    <!--shadowBlur: 3,-->
-                                                    <!--shadowColor: 'rgba(0, 0, 0, 0.6)',-->
-                                                    <!--shadowOffsetX: 2,-->
-                                                    <!--shadowOffsetY: 2-->
-                                                <!--}-->
-                                            <!--}],-->
-                                            <!--series: [-->
-                                                <!--{-->
-                                                    <!--name: '模拟数据',-->
-                                                    <!--type: 'line',-->
-                                                    <!--smooth: true,-->
-                                                    <!--symbol: 'none',-->
-                                                    <!--sampling: 'average',-->
-                                                    <!--itemStyle: {-->
-                                                        <!--normal: {-->
-                                                            <!--color: 'rgb(255, 70, 131)'-->
-                                                        <!--}-->
-                                                    <!--},-->
-                                                    <!--areaStyle: {-->
-                                                        <!--normal: {-->
-                                                            <!--color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{-->
-                                                                <!--offset: 0,-->
-                                                                <!--color: 'rgb(255, 158, 68)'-->
-                                                            <!--}, {-->
-                                                                <!--offset: 1,-->
-                                                                <!--color: 'rgb(255, 70, 131)'-->
-                                                            <!--}])-->
-                                                        <!--}-->
-                                                    <!--},-->
-                                                    <!--data: data-->
-                                                <!--}-->
-                                            <!--]-->
-                                        <!--};-->
-
-                                        <!--// 使用刚指定的配置项和数据显示图表。-->
-                                        <!--myChart.setOption(option);-->
-                                    <!--</script>-->
-                                <!--</div>-->
-                            <!--</li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<!--<div class="cover-container">-->
-    <!--<div class="mastfoot pos_stock">-->
-        <!--<div class="inner">-->
-            <!--<p>Organized by <a href="#">@AIDA</a>.</p>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-<!--</body>-->
-<!--</html>-->
+</body>
+</html>

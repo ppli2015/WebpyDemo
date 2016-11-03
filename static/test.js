@@ -154,23 +154,26 @@ $(document).ready(function () {
                     type: 'line',
                     smooth: true,
                     symbol: 'none',
-                    //sampling: 'average',
-                    itemStyle: {
+                    lineStyle: {
                         normal: {
-                            color: 'rgb(255, 70, 131)'
+                            color: 'rgb(255, 70, 131)',
+                            width: 1.5,
+                            shadowColor: 'rgba(255, 70, 131, 0.68)',
+                            shadowBlur: 2
                         }
                     },
-                    areaStyle: {
-                        normal: {
-                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                                offset: 0,
-                                color: 'rgb(255, 158, 68)'
-                            }, {
-                                offset: 1,
-                                color: 'rgb(255, 70, 131)'
-                            }])
-                        }
-                    },
+                    //sampling: 'max',
+                    //areaStyle: {
+                    //    normal: {
+                    //        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    //            offset: 0,
+                    //            color: 'rgb(255, 158, 68)'
+                    //        }, {
+                    //            offset: 1,
+                    //            color: 'rgb(255, 70, 131)'
+                    //        }])
+                    //    }
+                    //},
                     data: compData
                 }
             ]
