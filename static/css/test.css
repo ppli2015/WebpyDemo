@@ -430,6 +430,10 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+.left {
+  display: block;
+  text-align: left;
+}
 
 .search-btn {
   margin-right: 2rem;
@@ -441,4 +445,12 @@ body {
 }
 .index-font1 {
   font-family: SimHei, "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+
+.nav-bottom {
+  margin-bottom: 20px;
+}
+
+.img-bottom {
+  margin-bottom: 10px;
 }

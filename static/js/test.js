@@ -10,14 +10,16 @@ $(document).ready(function () {
         $(this).closest('.tabbed-content').find('.father>li:nth-of-type(' + liIndex + ')').addClass('active');
     });
 
-    $('.nav a').click(function () {
-        // alert("nav");
-        $(this).closest('.nav').find('a').removeClass('active');
-        $(this).addClass('active');
-        var liIndex = $(this).index() + 1;
-        $(this).closest('.tab-content').find('.child>li').removeClass('active');
-        $(this).closest('.tab-content').find('.child>li:nth-of-type(' + liIndex + ')').addClass('active');
-    });
+    //$('.nav a').click(function () {
+    //    // alert("nav");
+    //    $(this).closest('.nav').find('a').removeClass('active');
+    //    $(this).addClass('active');
+    //    var liIndex = $(this).index() + 1;
+    //    $(this).closest('.tab-content').find('.child>li').removeClass('active');
+    //    $(this).closest('.tab-content').find('.child>li:nth-of-type(' + liIndex + ')').addClass('active');
+    //});
+
+
 
 
     var myChart = echarts.init(document.getElementById('main1'), 'infographic');

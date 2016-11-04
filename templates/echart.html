@@ -5,22 +5,22 @@ $def with (name,stock_name,name_list,res_list)
     <meta charset="UTF-8">
     <title>$name</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./static/bootstrap.css">
-    <link rel="stylesheet" href="./static/test.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/test.css">
     <!-- jQuery first, then Bootstrap JS. -->
-    <script src="./static/jquery-3.0.0.min.js"></script>
-    <script src="./static/bootstrap.js"></script>
-    <script src="./static/test.js"></script>
-    <script src="./static/echarts.js"></script>
+    <script src="/static/js/jquery-3.0.0.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/test.js"></script>
+    <script src="/static/js/echarts.js"></script>
     <!-- themes.js -->
-    <script src="./static/dark.js"></script>
-    <script src="./static/macarons.js"></script>
-    <script src="./static/vintage.js"></script>
-    <script src="./static/roma.js"></script>
-    <script src="./static/infographic.js"></script>
-    <script src="./static/shine.js"></script>
+    <script src="/static/js/dark.js"></script>
+    <script src="/static/js/macarons.js"></script>
+    <script src="/static/js/vintage.js"></script>
+    <script src="/static/js/roma.js"></script>
+    <script src="/static/js/infographic.js"></script>
+    <script src="/static/js/shine.js"></script>
     <!-- maps.js -->
-    <script src="./static/china.js"></script>
+    <script src="/static/js/china.js"></script>
 
 
 </head>
@@ -28,183 +28,458 @@ $def with (name,stock_name,name_list,res_list)
 <div class="cover-container">
     <div class="masthead clearfix pos_stock">
         <div class="inner">
-            <h3 class="masthead-brand">AIDA</h3>
-            <nav class="nav nav-masthead">
-                <a class="nav-link active" href="#">Home</a>
-                <a class="nav-link" href="#">About us</a>
-                <a class="nav-link" href="#">Help</a>
-            </nav>
+            <h3 class="masthead-brand">滚滚资讯</h3>
         </div>
     </div>
 </div>
 <div class="main-container stock_content_div">
-    <div class="container">
-        <div class="row">
-            <div class="stock_content">
+    <div class="">
+        <div class="container">
+            <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="mb80 bold text-center topic_20">Few things about $name</h2>
-                    <div id="echart1" class="center-block" style="width: 900px;height: 520px;"></div>
-                    <script type="text/javascript">
-                        // 基于准备好的dom，初始化echarts实例
-                        // 第二个参数可以指定前面引入的主题
-                        var myChart = echarts.init(document.getElementById('echart1'), 'infographic');
+                    <h2 class="mb80 bold text-center topic_20">上市公司行业导航</h2>
 
-                        // 指定图表的配置项和数据
-                        function randomData() {
-                            return Math.round(Math.random() * 1000);
-                        }
+                    <div class="tabbed-content button-tabs vertical ">
+                        <ul class="tabs">
 
-                        var option = {
-                            title: {
-                                text: '上市公司与金融中介分布图',
-                                subtext: '纯属虚构',
-                                left: 'center'
-                            },
-                            tooltip: {
-                                trigger: 'item'
-                            },
-                            legend: {
-                                orient: 'vertical',
-                                left: 'left',
-                                data: [
+                            <li class="active">
+                                <div class="tab-title" id="category_1">
+                                    <span>军工</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_2">
+                                    <span>光伏</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_3">
+                                    <span>化工</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_4">
+                                    <span>房地产</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_5">
+                                    <span>证券</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_6">
+                                    <span>航空航天</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_7">
+                                    <span>酒店企业</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_8">
+                                    <span>物流</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_9">
+                                    <span>互联网</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-title" id="category_10">
+                                    <span>电信</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="content father">
+                            <li class="active">
+                                <div class="tab-content">
+                                    <!--Nav tabs -->
+                                    <ul class="nav nav-tabs nav-bottom" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#jungong_a"
+                                               role="tab" id="jungong_aa">A</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#jungong_b"
+                                               role="tab" id="jungong_bb">B</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#jungong_c"
+                                               role="tab">C</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#jungong_d"
+                                               role="tab">D</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#jungong_e"
+                                               role="tab">E</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="jungong_a" role="tabpanel">
+                                            <p class="left">
+                                                <a href="index.html">阿里巴巴</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司2</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司3</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司4</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司5</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司6</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司7</a>
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane" id="jungong_b" role="tabpanel">
+                                            <p class="left">
+                                                <a href="index.html">baidu</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司2</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司3</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司4</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司5</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司6</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司7</a>
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane" id="jungong_c" role="tabpanel">
+                                            <p class="left">
+                                                <a href="index.html">C</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司2</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司3</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司4</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司5</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司6</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司7</a>
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane" id="jungong_d" role="tabpanel">
+
+                                        </div>
+                                        <div class="tab-pane" id="jungong_e" role="tabpanel">
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tab-content">
+                                    <!--Nav tabs -->
+                                    <ul class="nav nav-tabs nav-bottom" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#guangfu_a"
+                                               role="tab">A</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#guangfu_b"
+                                               role="tab">B</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#guangfu_c"
+                                               role="tab">C</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#guangfu_d"
+                                               role="tab">D</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#guangfu_e"
+                                               role="tab">E</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="guangfu_a" role="tabpanel">
+                                            <p class="left">
+                                                <a href="index.html">阿里巴巴</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司2</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司3</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司4</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司5</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司6</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">A公司7</a>
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane" id="guangfu_b" role="tabpanel">
+                                            <p class="left">
+                                                <a href="index.html">baidu</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司2</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司3</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司4</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司5</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司6</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">B公司7</a>
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane" id="guangfu_c" role="tabpanel">
+                                            <p class="left">
+                                                <a href="index.html">C</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司2</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司3</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司4</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司5</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司6</a>
+                                            </p>
+                                            <p class="left">
+                                                <a href="index.html">C公司7</a>
+                                            </p>
+                                        </div>
+                                        <div class="tab-pane" id="guangfu_d" role="tabpanel">
+
+                                        </div>
+                                        <div class="tab-pane" id="guangfu_e" role="tabpanel">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="stock_content_div">
+                    <div class="col-sm-12">
+                        <div id="echart1" class="center-block" style="width: 900px;height: 520px;"></div>
+                        <script type="text/javascript">
+                            // 基于准备好的dom，初始化echarts实例
+                            // 第二个参数可以指定前面引入的主题
+                            var myChart = echarts.init(document.getElementById('echart1'), 'infographic');
+
+                            // 指定图表的配置项和数据
+                            function randomData() {
+                                return Math.round(Math.random() * 1000);
+                            }
+
+                            var option = {
+                                title: {
+                                    text: '上市公司与金融中介分布图',
+                                    subtext: '纯属虚构',
+                                    left: 'center'
+                                },
+                                tooltip: {
+                                    trigger: 'item'
+                                },
+                                legend: {
+                                    orient: 'vertical',
+                                    left: 'left',
+                                    data: [
+                                        {
+                                            name: '上市公司',
+                                            // 强制设置图形为圆。
+                                            icon: 'circle'
+                                        }, {
+                                            name: '金融中介',
+                                            // 强制设置图形为圆。
+                                            icon: 'circle'
+                                        }]
+                                },
+                                color: ['#91c7ae', '#6e7074', '#546570', '#c4ccd3'],
+                                visualMap: {
+                                    min: 0,
+                                    max: 2500,
+                                    left: 'left',
+                                    top: 'bottom',
+                                    text: ['高', '低'],           // 文本，默认为数值文本
+                                    calculable: true,
+                                    color: ['orange', 'white']
+                                },
+                                toolbox: {
+                                    show: true,
+                                    orient: 'vertical',
+                                    left: 'right',
+                                    top: 'center',
+                                    feature: {
+                                        dataView: {readOnly: false},
+                                        restore: {},
+                                        saveAsImage: {}
+                                    }
+                                },
+                                series: [
                                     {
                                         name: '上市公司',
-                                        // 强制设置图形为圆。
-                                        icon: 'circle'
-                                    }, {
+                                        type: 'map',
+                                        mapType: 'china',
+                                        roam: true,
+                                        label: {
+                                            normal: {
+                                                show: true
+                                            },
+                                            emphasis: {
+                                                show: true
+                                            }
+                                        },
+                                        data: [
+                                            {name: '北京', value: randomData()},
+                                            {name: '天津', value: randomData()},
+                                            {name: '上海', value: randomData()},
+                                            {name: '重庆', value: randomData()},
+                                            {name: '河北', value: randomData()},
+                                            {name: '河南', value: randomData()},
+                                            {name: '云南', value: randomData()},
+                                            {name: '辽宁', value: randomData()},
+                                            {name: '黑龙江', value: randomData()},
+                                            {name: '湖南', value: randomData()},
+                                            {name: '安徽', value: randomData()},
+                                            {name: '山东', value: randomData()},
+                                            {name: '新疆', value: randomData()},
+                                            {name: '江苏', value: randomData()},
+                                            {name: '浙江', value: randomData()},
+                                            {name: '江西', value: randomData()},
+                                            {name: '湖北', value: randomData()},
+                                            {name: '广西', value: randomData()},
+                                            {name: '甘肃', value: randomData()},
+                                            {name: '山西', value: randomData()},
+                                            {name: '内蒙古', value: randomData()},
+                                            {name: '陕西', value: randomData()},
+                                            {name: '吉林', value: randomData()},
+                                            {name: '福建', value: randomData()},
+                                            {name: '贵州', value: randomData()},
+                                            {name: '广东', value: randomData()},
+                                            {name: '青海', value: randomData()},
+                                            {name: '西藏', value: randomData()},
+                                            {name: '四川', value: randomData()},
+                                            {name: '宁夏', value: randomData()},
+                                            {name: '海南', value: randomData()},
+                                            {name: '台湾', value: randomData()},
+                                            {name: '香港', value: randomData()},
+                                            {name: '澳门', value: randomData()}
+                                        ]
+                                    },
+                                    {
                                         name: '金融中介',
-                                        // 强制设置图形为圆。
-                                        icon: 'circle'
-                                    }]
-                            },
-                            color: ['#91c7ae', '#6e7074', '#546570', '#c4ccd3'],
-                            visualMap: {
-                                min: 0,
-                                max: 2500,
-                                left: 'left',
-                                top: 'bottom',
-                                text: ['高', '低'],           // 文本，默认为数值文本
-                                calculable: true,
-                                color: ['orange', 'white']
-                            },
-                            toolbox: {
-                                show: true,
-                                orient: 'vertical',
-                                left: 'right',
-                                top: 'center',
-                                feature: {
-                                    dataView: {readOnly: false},
-                                    restore: {},
-                                    saveAsImage: {}
-                                }
-                            },
-                            series: [
-                                {
-                                    name: '上市公司',
-                                    type: 'map',
-                                    mapType: 'china',
-                                    roam: true,
-                                    label: {
-                                        normal: {
-                                            show: true
+                                        type: 'map',
+                                        mapType: 'china',
+                                        roam: true,
+                                        label: {
+                                            normal: {
+                                                show: true
+                                            },
+                                            emphasis: {
+                                                show: true
+                                            }
                                         },
-                                        emphasis: {
-                                            show: true
-                                        }
-                                    },
-                                    data: [
-                                        {name: '北京', value: randomData()},
-                                        {name: '天津', value: randomData()},
-                                        {name: '上海', value: randomData()},
-                                        {name: '重庆', value: randomData()},
-                                        {name: '河北', value: randomData()},
-                                        {name: '河南', value: randomData()},
-                                        {name: '云南', value: randomData()},
-                                        {name: '辽宁', value: randomData()},
-                                        {name: '黑龙江', value: randomData()},
-                                        {name: '湖南', value: randomData()},
-                                        {name: '安徽', value: randomData()},
-                                        {name: '山东', value: randomData()},
-                                        {name: '新疆', value: randomData()},
-                                        {name: '江苏', value: randomData()},
-                                        {name: '浙江', value: randomData()},
-                                        {name: '江西', value: randomData()},
-                                        {name: '湖北', value: randomData()},
-                                        {name: '广西', value: randomData()},
-                                        {name: '甘肃', value: randomData()},
-                                        {name: '山西', value: randomData()},
-                                        {name: '内蒙古', value: randomData()},
-                                        {name: '陕西', value: randomData()},
-                                        {name: '吉林', value: randomData()},
-                                        {name: '福建', value: randomData()},
-                                        {name: '贵州', value: randomData()},
-                                        {name: '广东', value: randomData()},
-                                        {name: '青海', value: randomData()},
-                                        {name: '西藏', value: randomData()},
-                                        {name: '四川', value: randomData()},
-                                        {name: '宁夏', value: randomData()},
-                                        {name: '海南', value: randomData()},
-                                        {name: '台湾', value: randomData()},
-                                        {name: '香港', value: randomData()},
-                                        {name: '澳门', value: randomData()}
-                                    ]
-                                },
-                                {
-                                    name: '金融中介',
-                                    type: 'map',
-                                    mapType: 'china',
-                                    roam: true,
-                                    label: {
-                                        normal: {
-                                            show: true
-                                        },
-                                        emphasis: {
-                                            show: true
-                                        }
-                                    },
-                                    data: [
-                                        {name: '北京', value: randomData()},
-                                        {name: '天津', value: randomData()},
-                                        {name: '上海', value: randomData()},
-                                        {name: '重庆', value: randomData()},
-                                        {name: '河北', value: randomData()},
-                                        {name: '河南', value: randomData()},
-                                        {name: '云南', value: randomData()},
-                                        {name: '辽宁', value: randomData()},
-                                        {name: '黑龙江', value: randomData()},
-                                        {name: '湖南', value: randomData()},
-                                        {name: '安徽', value: randomData()},
-                                        {name: '山东', value: randomData()},
-                                        {name: '新疆', value: randomData()},
-                                        {name: '江苏', value: randomData()},
-                                        {name: '浙江', value: randomData()},
-                                        {name: '江西', value: randomData()},
-                                        {name: '湖北', value: randomData()},
-                                        {name: '广西', value: randomData()},
-                                        {name: '甘肃', value: randomData()},
-                                        {name: '山西', value: randomData()},
-                                        {name: '内蒙古', value: randomData()},
-                                        {name: '陕西', value: randomData()},
-                                        {name: '吉林', value: randomData()},
-                                        {name: '福建', value: randomData()},
-                                        {name: '贵州', value: randomData()},
-                                        {name: '广东', value: randomData()},
-                                        {name: '青海', value: randomData()},
-                                        {name: '西藏', value: randomData()},
-                                        {name: '四川', value: randomData()},
-                                        {name: '宁夏', value: randomData()},
-                                        {name: '海南', value: randomData()},
-                                        {name: '台湾', value: randomData()},
-                                        {name: '香港', value: randomData()},
-                                        {name: '澳门', value: randomData()}
-                                    ]
-                                }
-                            ]
-                        };
+                                        data: [
+                                            {name: '北京', value: randomData()},
+                                            {name: '天津', value: randomData()},
+                                            {name: '上海', value: randomData()},
+                                            {name: '重庆', value: randomData()},
+                                            {name: '河北', value: randomData()},
+                                            {name: '河南', value: randomData()},
+                                            {name: '云南', value: randomData()},
+                                            {name: '辽宁', value: randomData()},
+                                            {name: '黑龙江', value: randomData()},
+                                            {name: '湖南', value: randomData()},
+                                            {name: '安徽', value: randomData()},
+                                            {name: '山东', value: randomData()},
+                                            {name: '新疆', value: randomData()},
+                                            {name: '江苏', value: randomData()},
+                                            {name: '浙江', value: randomData()},
+                                            {name: '江西', value: randomData()},
+                                            {name: '湖北', value: randomData()},
+                                            {name: '广西', value: randomData()},
+                                            {name: '甘肃', value: randomData()},
+                                            {name: '山西', value: randomData()},
+                                            {name: '内蒙古', value: randomData()},
+                                            {name: '陕西', value: randomData()},
+                                            {name: '吉林', value: randomData()},
+                                            {name: '福建', value: randomData()},
+                                            {name: '贵州', value: randomData()},
+                                            {name: '广东', value: randomData()},
+                                            {name: '青海', value: randomData()},
+                                            {name: '西藏', value: randomData()},
+                                            {name: '四川', value: randomData()},
+                                            {name: '宁夏', value: randomData()},
+                                            {name: '海南', value: randomData()},
+                                            {name: '台湾', value: randomData()},
+                                            {name: '香港', value: randomData()},
+                                            {name: '澳门', value: randomData()}
+                                        ]
+                                    }
+                                ]
+                            };
 
-                        // 使用刚指定的配置项和数据显示图表。
-                        myChart.setOption(option);
-                    </script>
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>

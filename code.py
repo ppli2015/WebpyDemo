@@ -7,26 +7,28 @@ import urllib
 
 ##urls (argument) - class - page
 urls = (
-    '/(\index)', 'index',
-    '/(\d+)', 'iii',
-    '/(\iii)', 'iii',
-    '/(\echart)', 'echart',
+    '/(\index(.html)?)', 'index',
+    '/(\d+(.html)?)', 'iii',
+    '/(\iii(.html)?)', 'iii',
+    '/(\echart(.html)?)', 'echart',
 )
 render = web.template.render("templates")
 
 
 class index:
-    def GET(self, name):
+    def GET(self, name, ds):
         print 'index.GET:', name, '=' * 10
+        print ds
         # argu = [name, 'help']
         # argus = {'a1': '111', 'a2': '222'}
         # return render.test('hh', *argu, **argus)
         return render.index(name)
 
-    def POST(self, name):
+    def POST(self, name, ds):
         i = web.data()
         query = urllib.unquote(i.split('=')[1])
         print 'index.POST:', name, '=' * 10
+        print ds
         # i = web.input(id=[])
         # ids = i.get('id')
         # print ids
@@ -38,7 +40,7 @@ class index:
 
 
 class iii:
-    def GET(self, name):
+    def GET(self, name, ds):
         print 'iii.GET:', name, '=' * 10
         code = name
         path = 'C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/'
@@ -72,7 +74,7 @@ class iii:
             return render.fenlan2(name, stock_name, name_list, res_list)
             # return render.fenlan(name)
 
-    def POST(self, name):
+    def POST(self, name, ds):
         i = web.data()
         query = i.split('=')[1]
         print 'iii.POST:', name, '=' * 10
@@ -87,7 +89,7 @@ class iii:
 
 
 class echart:
-    def GET(self, name):
+    def GET(self, name, ds):
         print 'echart.GET:', name, '=' * 10
         f = open('C:/Users/Xiang/PycharmProjects/scrapy_stock/tutorial/data_105/000015', 'r')
         lines = f.readlines()
@@ -110,7 +112,7 @@ class echart:
 
         return render.echart(name, stock_name, name_list, res_list)
 
-    def POST(self, name):
+    def POST(self, name, ds):
         #
         # i = web.data()
         # year = i.split('=')[1].split('&')[0]
