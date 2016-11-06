@@ -478,6 +478,10 @@ $def with (name,stock_name,name_list,res_list)
 
                             // 使用刚指定的配置项和数据显示图表。
                             myChart.setOption(option);
+                            myChart.on('click', function(params) {
+                                console.log(params.name);
+                                window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
+                            });
                         </script>
                     </div>
                 </div>
