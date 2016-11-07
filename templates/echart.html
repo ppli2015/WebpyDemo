@@ -28,7 +28,7 @@ $def with (name,stock_name,name_list,res_list)
 <div class="cover-container">
     <div class="masthead clearfix pos_stock">
         <div class="inner">
-            <h3 class="masthead-brand">滚滚资讯</h3>
+            <a href="index.html"><h3 class="masthead-brand">XXXX</h3></a>
         </div>
     </div>
 </div>
@@ -478,6 +478,7 @@ $def with (name,stock_name,name_list,res_list)
 
                             // 使用刚指定的配置项和数据显示图表。
                             myChart.setOption(option);
+                            // http://echarts.baidu.com/tutorial.html#ECharts%20%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%92%8C%E8%A1%8C%E4%B8%BA
                             myChart.on('click', function(params) {
                                 console.log(params.name);
                                 window.open('https://www.baidu.com/s?wd=' + encodeURIComponent(params.name));
